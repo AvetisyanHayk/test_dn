@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<xs:schema  id="report"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            xmlns:rep="http://www.dn.gaverzicht.com/report"
+            targetNamespace="http://www.dn.gaverzicht.com/report"
+            elementFormDefault="qualified"
+>
+    
+    <xs:complexType name="_rendering">
+        <xs:sequence>
+            <xs:element name="document" type="xs:long"/>
+            <xs:element name="page" type="xs:int"/>
+            <xs:element name="uid" type="xs:string"/>
+            <xs:element name="start" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="get" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="_summary">
+        <xs:sequence>
+            <xs:element name="count" type="xs:int"/>
+            <xs:element name="duplicates" type="xs:int"/>
+            <xs:element name="unnecessary" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:element name="report">
+        <xs:complexType>
+        	<xs:sequence>
+        		<xs:element name="rendering" type="rep:_rendering" maxOccurs="unbounded"/>
+        		<xs:element name="summary" type="rep:_summary"/>
+        	</xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
